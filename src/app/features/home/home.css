@@ -262,6 +262,7 @@
 }
 
 @media (max-width: 800px) {
+  /* Em telas menores, a vitrine fica abaixo do texto para manter a leitura confortável. */
   .hero {
     grid-template-columns: 1fr;
   }

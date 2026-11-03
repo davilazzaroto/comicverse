@@ -164,6 +164,7 @@
 }
 
 @media (max-width: 640px) {
+  /* O botão de novo cadastro passa para baixo do título em telas estreitas. */
   .admin-cabecalho {
     align-items: flex-start;
     flex-direction: column;

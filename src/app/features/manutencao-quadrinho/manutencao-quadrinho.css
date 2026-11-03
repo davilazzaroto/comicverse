@@ -123,6 +123,7 @@
     flex-direction: column;
   }
 
+  /* No celular, o conteúdo e os campos de exemplo usam uma única coluna. */
   .formulario-reserva {
     grid-template-columns: 1fr;
   }

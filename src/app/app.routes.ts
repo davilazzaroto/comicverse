@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 
+// Cada rota carrega sua tela sob demanda; caminhos desconhecidos voltam ao início.
 export const routes: Routes = [
   {
     path: '',

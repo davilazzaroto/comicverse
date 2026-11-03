@@ -86,6 +86,7 @@
 }
 
 @media (max-width: 680px) {
+  /* Uma coluna evita apertar os dois textos em telas estreitas. */
   .secoes-sobre {
     grid-template-columns: 1fr;
   }

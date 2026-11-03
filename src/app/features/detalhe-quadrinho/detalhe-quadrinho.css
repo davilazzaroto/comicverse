@@ -227,6 +227,7 @@
     flex-direction: column;
   }
 
+  /* No celular, a capa fica acima dos dados para aproveitar a largura disponível. */
   .ficha {
     grid-template-columns: 1fr;
   }
