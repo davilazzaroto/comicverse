@@ -1,0 +1,15 @@
+.rodape {
+  margin-top: auto;
+  padding: 22px 16px;
+  background: #1d2440;
+  color: #fff;
+  text-align: center;
+}
+
+.rodape p {
+  margin: 0 0 6px;
+}
+
+.rodape small {
+  color: #c5cbe0;
+}

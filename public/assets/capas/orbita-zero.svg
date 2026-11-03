@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="520" viewBox="0 0 360 520" role="img" aria-labelledby="title desc">
+  <title id="title">Órbita Zero</title>
+  <desc id="desc">Capa de ficção científica em azul-marinho e ciano, com um planeta e uma nave em órbita.</desc>
+  <defs>
+    <linearGradient id="space" x2="0" y2="1">
+      <stop stop-color="#101b3d"/>
+      <stop offset="1" stop-color="#24536d"/>
+    </linearGradient>
+    <radialGradient id="planet">
+      <stop stop-color="#a8e4df"/>
+      <stop offset="1" stop-color="#3b8c9a"/>
+    </radialGradient>
+  </defs>
+  <rect width="360" height="520" rx="12" fill="url(#space)"/>
+  <g fill="#e1f3eb">
+    <circle cx="44" cy="92" r="2"/><circle cx="310" cy="76" r="3"/>
+    <circle cx="281" cy="210" r="2"/><circle cx="67" cy="248" r="3"/>
+    <circle cx="128" cy="142" r="2"/><circle cx="324" cy="321" r="2"/>
+  </g>
+  <circle cx="188" cy="252" r="108" fill="url(#planet)"/>
+  <path d="M78 262c67-85 151-101 231-40" fill="none" stroke="#e5b85b" stroke-width="7" stroke-linecap="round"/>
+  <path d="m125 358 38-79 32 19 46 64-58-20Z" fill="#f3e7c7"/>
+  <path d="m163 279 17-44 20 43" fill="#e5b85b"/>
+  <path d="m163 279-38 79 58-20" fill="#91d3d5"/>
+  <text x="28" y="46" fill="#8fe0dc" font-family="Arial,sans-serif" font-size="12" font-weight="700" letter-spacing="4">COMICVERSE · SCI-FI</text>
+  <text x="28" y="454" fill="#fff" font-family="Arial,sans-serif" font-size="39" font-weight="800" letter-spacing="2">ÓRBITA</text>
+  <text x="28" y="494" fill="#e5b85b" font-family="Arial,sans-serif" font-size="39" font-weight="800" letter-spacing="2">ZERO</text>
+</svg>

@@ -1,0 +1,254 @@
+.pagina-base {
+  width: min(100%, 1120px);
+  margin: 0 auto;
+  color: #1d2440;
+}
+
+.voltar {
+  display: inline-flex;
+  margin: 0 0 30px;
+  color: #626a81;
+  align-items: center;
+  gap: 9px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.voltar:hover {
+  color: #a87312;
+}
+
+.cabecalho-ficha {
+  display: flex;
+  margin-bottom: 24px;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.etiqueta {
+  color: #a87312;
+  font-size: .78rem;
+  font-weight: 800;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+}
+
+.cabecalho-ficha h1 {
+  margin: 11px 0 7px;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  letter-spacing: -.04em;
+}
+
+.cabecalho-ficha p {
+  max-width: 650px;
+  margin: 0;
+  color: #626a81;
+  line-height: 1.7;
+}
+
+.identificador {
+  display: flex;
+  margin-bottom: 3px;
+  padding: 9px 12px;
+  border: 1px solid #e0e3ec;
+  border-radius: 5px;
+  color: #747b91;
+  align-items: center;
+  gap: 9px;
+  font-size: .66rem;
+  font-weight: 800;
+  letter-spacing: .1em;
+  white-space: nowrap;
+}
+
+.identificador strong {
+  color: #b17c18;
+  font-size: .9rem;
+}
+
+.ficha {
+  display: grid;
+  min-height: 480px;
+  overflow: hidden;
+  border: 1px solid #dfe2e9;
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: 0 16px 44px rgb(29 36 64 / 6%);
+  grid-template-columns: minmax(240px, .72fr) minmax(0, 1.5fr);
+}
+
+.capa-reserva {
+  position: relative;
+  display: flex;
+  min-height: 440px;
+  padding: 24px;
+  border-right: 1px solid #e0e3ec;
+  background:
+    radial-gradient(ellipse at 50% 42%, rgb(229 184 91 / 22%), transparent 48%),
+    #f2f1ed;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.capa-lombada {
+  position: absolute;
+  top: 10%;
+  bottom: 10%;
+  left: 12%;
+  width: 7px;
+  border-radius: 4px;
+  background: #d8c99e;
+  opacity: .8;
+}
+
+.capa-icone {
+  display: grid;
+  width: 76px;
+  height: 76px;
+  border: 1px solid #d6bd82;
+  border-radius: 50%;
+  color: #a87312;
+  font-size: 2rem;
+  place-items: center;
+}
+
+.capa-aviso {
+  margin-top: 20px;
+  color: #777b89;
+  font-size: .7rem;
+  font-weight: 800;
+  letter-spacing: .14em;
+}
+
+.capa-status {
+  position: absolute;
+  right: 18px;
+  bottom: 18px;
+  left: 18px;
+  padding-top: 12px;
+  border-top: 1px solid #d8d9dc;
+  color: #85899a;
+  font-size: .62rem;
+  font-weight: 800;
+  letter-spacing: .1em;
+  text-align: center;
+}
+
+.dados-ficha {
+  display: flex;
+  padding: clamp(24px, 4vw, 52px);
+  flex-direction: column;
+  justify-content: center;
+}
+
+.rotulo,
+.autor span {
+  color: #9a7a3d;
+  font-size: .66rem;
+  font-weight: 800;
+  letter-spacing: .13em;
+}
+
+.titulo-obra h2 {
+  margin: 10px 0 7px;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(1.6rem, 3.2vw, 2.5rem);
+  font-weight: 400;
+  letter-spacing: -.025em;
+}
+
+.autor {
+  display: flex;
+  margin: 0;
+  color: #626a81;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.metadados {
+  display: grid;
+  margin: 32px 0 0;
+  padding: 24px 0;
+  border-block: 1px solid #e6e8ee;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 23px 20px;
+}
+
+.metadados div {
+  min-width: 0;
+}
+
+.metadados dt {
+  margin-bottom: 7px;
+  color: #85899a;
+  font-size: .77rem;
+}
+
+.metadados dd {
+  display: flex;
+  margin: 0;
+  color: #303750;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+}
+
+.tag-genero {
+  padding: 5px 9px;
+  border: 1px solid #e7dcc1;
+  border-radius: 30px;
+  background: #faf6eb;
+  color: #8b671d;
+  font-size: .78rem;
+}
+
+.metadados .disponibilidade {
+  grid-column: 1 / -1;
+}
+
+.status-pendente {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #d3a643;
+}
+
+.nota-ficha {
+  margin: 20px 0 0;
+  color: #85899a;
+  font-size: .8rem;
+}
+
+@media (max-width: 700px) {
+  .cabecalho-ficha {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .ficha {
+    grid-template-columns: 1fr;
+  }
+
+  .capa-reserva {
+    min-height: 270px;
+    border-right: 0;
+    border-bottom: 1px solid #e0e3ec;
+  }
+
+  .capa-lombada {
+    top: 12%;
+    bottom: 12%;
+  }
+}
+
+@media (max-width: 420px) {
+  .dados-ficha {
+    padding: 24px 18px;
+  }
+
+  .metadados {
+    gap: 20px 12px;
+  }
+}

@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="520" viewBox="0 0 360 520" role="img" aria-labelledby="title desc">
+  <title id="title">Arquivo Noir</title>
+  <desc id="desc">Capa de mistério em preto e dourado com uma janela iluminada numa rua chuvosa.</desc>
+  <defs>
+    <linearGradient id="night" x2="0" y2="1">
+      <stop stop-color="#202638"/>
+      <stop offset="1" stop-color="#10151f"/>
+    </linearGradient>
+    <linearGradient id="window" x2="0" y2="1">
+      <stop stop-color="#f6d98d"/>
+      <stop offset="1" stop-color="#b77c39"/>
+    </linearGradient>
+  </defs>
+  <rect width="360" height="520" rx="12" fill="url(#night)"/>
+  <path d="M42 100h124v264H42z" fill="#30394c"/>
+  <path d="M61 122h86v106H61z" fill="url(#window)"/>
+  <path d="M104 122v106M61 175h86" stroke="#31384a" stroke-width="8"/>
+  <path d="M0 369h360v151H0z" fill="#171c29"/>
+  <path d="M0 407c88-28 174 32 360-9M0 450c114-27 202 33 360-12M36 363l-12 68m87-70-17 108m155-97-15 95m82-95-13 61" fill="none" stroke="#bd9b60" stroke-opacity=".5" stroke-width="3"/>
+  <circle cx="257" cy="150" r="42" fill="#e2b45e" fill-opacity=".9"/>
+  <path d="M217 337c5-67 31-105 48-105s42 38 48 105" fill="#0c111b"/>
+  <text x="27" y="46" fill="#e5b85b" font-family="Arial,sans-serif" font-size="12" font-weight="700" letter-spacing="4">COMICVERSE · MISTÉRIO</text>
+  <text x="27" y="454" fill="#f7eedc" font-family="Georgia,serif" font-size="37" font-weight="700">ARQUIVO</text>
+  <text x="27" y="494" fill="#e5b85b" font-family="Georgia,serif" font-size="37" font-weight="700">NOIR</text>
+</svg>

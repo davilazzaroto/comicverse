@@ -1,0 +1,26 @@
+<section class="pagina-base">
+  <header class="admin-cabecalho">
+    <div>
+      <span class="etiqueta">ComicVerse <span aria-hidden="true">/</span> Administração</span>
+      <h1>Administração de quadrinhos</h1>
+      <p>Organize as obras que fazem parte do acervo.</p>
+    </div>
+    <a class="botao-novo" routerLink="/admin/quadrinhos/novo"><span aria-hidden="true">+</span> Novo quadrinho</a>
+  </header>
+
+  <section class="itens" aria-labelledby="titulo-itens">
+    <div class="itens-cabecalho">
+      <div>
+        <span class="rotulo-secao">ACERVO</span>
+        <h2 id="titulo-itens">Itens cadastrados</h2>
+      </div>
+      <span class="contador-itens">— <span>obras</span></span>
+    </div>
+    <div class="estado-vazio">
+      <div class="icone-estante" aria-hidden="true"><span></span><span></span><span></span></div>
+      <h3>Nenhum quadrinho cadastrado ainda</h3>
+      <p>Os itens do acervo aparecerão aqui quando o cadastro estiver conectado à API.</p>
+      <a routerLink="/admin/quadrinhos/novo">Preparar um novo cadastro <span aria-hidden="true">→</span></a>
+    </div>
+  </section>
+</section>

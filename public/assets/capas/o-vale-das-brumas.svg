@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="520" viewBox="0 0 360 520" role="img" aria-labelledby="title desc">
+  <title id="title">O Vale das Brumas</title>
+  <desc id="desc">Capa de fantasia com montanhas verdes, névoa lilás e uma torre distante.</desc>
+  <defs>
+    <linearGradient id="mist" x2="0" y2="1">
+      <stop stop-color="#bbb4d3"/>
+      <stop offset=".52" stop-color="#799395"/>
+      <stop offset="1" stop-color="#233d44"/>
+    </linearGradient>
+  </defs>
+  <rect width="360" height="520" rx="12" fill="url(#mist)"/>
+  <circle cx="265" cy="155" r="51" fill="#f0d9a7" fill-opacity=".92"/>
+  <path d="m0 303 92-123 81 107 71-90 116 113v210H0Z" fill="#476e69"/>
+  <path d="m0 353 108-94 70 68 97-101 85 105v177H0Z" fill="#294d4b"/>
+  <path d="M154 281h27v76h-27z" fill="#1b3439"/>
+  <path d="m149 282 18-34 19 34" fill="#1b3439"/>
+  <path d="M0 347c71-27 111-8 168 5s111 24 192-4" fill="none" stroke="#e2dce5" stroke-opacity=".78" stroke-width="13"/>
+  <path d="M0 385c60-16 120-6 170 9s123 17 190-4" fill="none" stroke="#d7dbe0" stroke-opacity=".62" stroke-width="9"/>
+  <text x="26" y="46" fill="#f8e6bb" font-family="Arial,sans-serif" font-size="12" font-weight="700" letter-spacing="4">COMICVERSE · FANTASIA</text>
+  <text x="26" y="451" fill="#fff9ed" font-family="Georgia,serif" font-size="30" font-weight="700">O VALE</text>
+  <text x="26" y="488" fill="#fff9ed" font-family="Georgia,serif" font-size="30" font-weight="700">DAS BRUMAS</text>
+</svg>

@@ -1,0 +1,92 @@
+:host {
+  display: block;
+}
+
+.sobre {
+  width: min(100%, 1100px);
+  margin: 0 auto;
+  color: #202842;
+}
+
+.apresentacao {
+  padding: clamp(34px, 7vw, 76px);
+  border-radius: 24px;
+  background: linear-gradient(135deg, #1d2440, #35416b);
+  color: #fff;
+}
+
+.etiqueta {
+  color: #e5b85b;
+  font-size: .8rem;
+  font-weight: 800;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.apresentacao h1 {
+  max-width: 800px;
+  margin: 14px 0;
+  font-size: clamp(2.2rem, 6vw, 4.2rem);
+  letter-spacing: -.04em;
+  line-height: 1.04;
+}
+
+.resumo {
+  max-width: 720px;
+  margin: 0;
+  color: #e7eaf5;
+  font-size: 1.12rem;
+  line-height: 1.75;
+}
+
+.secoes-sobre {
+  display: grid;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: clamp(40px, 7vw, 76px) 0;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(28px, 6vw, 76px);
+}
+
+.objetivo {
+  padding-top: 18px;
+  border-top: 2px solid #e5b85b;
+}
+
+.numero-secao {
+  color: #a87312;
+  font-size: .68rem;
+  font-weight: 800;
+  letter-spacing: .12em;
+}
+
+.numero-secao span {
+  padding: 0 5px;
+  color: #b8bbc5;
+}
+
+.objetivo h2 {
+  margin: 16px 0 12px;
+  color: #1d2440;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(1.55rem, 3vw, 2.2rem);
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+.objetivo p {
+  margin: 0;
+  color: #5d647b;
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+.objetivo-aula {
+  border-color: #35416b;
+}
+
+@media (max-width: 680px) {
+  .secoes-sobre {
+    grid-template-columns: 1fr;
+  }
+}

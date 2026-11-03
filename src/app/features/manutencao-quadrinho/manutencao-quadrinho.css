@@ -1,0 +1,139 @@
+.pagina-base {
+  width: min(100%, 1100px);
+  margin: 0 auto;
+  color: #1d2440;
+}
+
+.voltar {
+  display: inline-flex;
+  margin: 0 0 30px;
+  color: #626a81;
+  align-items: center;
+  gap: 9px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.voltar:hover {
+  color: #a87312;
+}
+
+.manutencao-cabecalho {
+  display: flex;
+  margin-bottom: 26px;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.etiqueta {
+  color: #a87312;
+  font-size: .78rem;
+  font-weight: 800;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+}
+
+.manutencao-cabecalho h1 {
+  margin: 11px 0 7px;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  letter-spacing: -.04em;
+}
+
+.manutencao-cabecalho p {
+  margin: 0;
+  color: #626a81;
+  line-height: 1.7;
+}
+
+.etiqueta-etapa {
+  margin-bottom: 4px;
+  padding: 8px 10px;
+  border: 1px solid #e5dcc7;
+  border-radius: 4px;
+  color: #8b671d;
+  font-size: .62rem;
+  font-weight: 800;
+  letter-spacing: .1em;
+}
+
+.formulario-reserva {
+  display: grid;
+  min-height: 350px;
+  padding: clamp(24px, 5vw, 48px);
+  border: 1px solid #e0e3ec;
+  border-radius: 14px;
+  background: #fafafc;
+  grid-template-columns: 52px minmax(0, 1fr);
+  align-content: center;
+  gap: 18px;
+}
+
+.reserva-icone {
+  display: grid;
+  width: 48px;
+  height: 48px;
+  border: 1px solid #e5dcc7;
+  border-radius: 12px;
+  background: #f7f0df;
+  color: #a87312;
+  font-size: 1.4rem;
+  place-items: center;
+}
+
+.rotulo-secao {
+  color: #a87312;
+  font-size: .66rem;
+  font-weight: 800;
+  letter-spacing: .14em;
+}
+
+.formulario-reserva h2 {
+  margin: 7px 0;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 400;
+}
+
+.formulario-reserva p {
+  max-width: 640px;
+  margin: 0;
+  color: #626a81;
+  line-height: 1.7;
+}
+
+.campos-esqueleto {
+  display: grid;
+  margin-top: 14px;
+  grid-column: 2;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.campos-esqueleto span {
+  height: 42px;
+  border: 1px dashed #d5d8e1;
+  border-radius: 6px;
+  background: #fff;
+}
+
+@media (max-width: 640px) {
+  .manutencao-cabecalho {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .formulario-reserva {
+    grid-template-columns: 1fr;
+  }
+
+  .campos-esqueleto {
+    grid-column: 1;
+  }
+}
+
+@media (max-width: 420px) {
+  .campos-esqueleto {
+    grid-template-columns: 1fr;
+  }
+}

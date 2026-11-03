@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="520" viewBox="0 0 360 520" role="img" aria-labelledby="title desc">
+  <title id="title">A Lua de Cobre</title>
+  <desc id="desc">Capa ilustrada em tons de cobre, com uma lua crescente sobre montanhas.</desc>
+  <defs>
+    <linearGradient id="sky" x2="0" y2="1">
+      <stop stop-color="#293854"/>
+      <stop offset="1" stop-color="#8f5845"/>
+    </linearGradient>
+    <linearGradient id="moon" x2="0" y2="1">
+      <stop stop-color="#f8d88d"/>
+      <stop offset="1" stop-color="#d58254"/>
+    </linearGradient>
+  </defs>
+  <rect width="360" height="520" rx="12" fill="url(#sky)"/>
+  <circle cx="250" cy="160" r="73" fill="url(#moon)"/>
+  <circle cx="278" cy="136" r="70" fill="#34405a"/>
+  <path d="M0 338 86 244l63 69 84-116 127 143v180H0Z" fill="#18283c"/>
+  <path d="m0 397 107-99 77 68 75-85 101 92v147H0Z" fill="#101d30"/>
+  <path d="M0 417h360" stroke="#e5b878" stroke-opacity=".7" stroke-width="3"/>
+  <g fill="#f3d9a1">
+    <circle cx="60" cy="93" r="3"/><circle cx="110" cy="153" r="2"/>
+    <circle cx="182" cy="70" r="3"/><circle cx="319" cy="85" r="2"/>
+    <circle cx="35" cy="205" r="2"/><circle cx="145" cy="198" r="2"/>
+  </g>
+  <text x="28" y="46" fill="#f2d89d" font-family="Arial,sans-serif" font-size="12" font-weight="700" letter-spacing="4">COMICVERSE · AVENTURA</text>
+  <text x="28" y="454" fill="#fff5df" font-family="Georgia,serif" font-size="34" font-weight="700">A LUA</text>
+  <text x="28" y="491" fill="#fff5df" font-family="Georgia,serif" font-size="34" font-weight="700">DE COBRE</text>
+</svg>

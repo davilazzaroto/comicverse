@@ -1,0 +1,14 @@
+<header class="cabecalho">
+  <div class="cabecalho-conteudo">
+    <a class="marca" routerLink="/" aria-label="ComicVerse — início">
+      <span class="marca-simbolo" aria-hidden="true">C</span>
+      <span>ComicVerse</span>
+    </a>
+    <nav aria-label="Menu principal">
+      <a routerLink="/" routerLinkActive="ativo" [routerLinkActiveOptions]="{ exact: true }">Início</a>
+      <a routerLink="/quadrinhos" routerLinkActive="ativo">Catálogo</a>
+      <a routerLink="/sobre" routerLinkActive="ativo">Sobre</a>
+      <a class="botao-admin" routerLink="/admin" routerLinkActive="ativo">Admin</a>
+    </nav>
+  </div>
+</header>
