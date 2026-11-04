@@ -1,6 +1,6 @@
 // Formato comum dos dados de uma obra no catálogo.
 export interface Quadrinho {
-  id: number;
+  id: string;
   titulo: string;
   autor: string;
   editora: string;
