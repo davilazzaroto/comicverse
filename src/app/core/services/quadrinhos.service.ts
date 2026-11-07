@@ -6,7 +6,7 @@ import { map, Observable } from 'rxjs';
 
 // Ponto central para ler e manter quadrinhos; a integração com API e Firebase
 // ainda será feita em aula.
-type FirebaseQuadrinho = Omit<Quadrinho, 'id'> & { id?: string } ;
+type FirebaseQuadrinho = Omit<Quadrinho, 'id'> & { id?: string };
 
 @Injectable({ providedIn: 'root' })
 export class QuadrinhosService {
@@ -37,6 +37,20 @@ export class QuadrinhosService {
         return { id, ...quadrinhoData };
       }),
     );
+  }
+
+  create(quadrinho: Omit<Quadrinho, 'id'>): Observable<Quadrinho> {
+    return this.http.post<{ name: string }>(this.apiUrl + this.sufix, quadrinho).pipe(
+      map((response) => ({
+        id: response.name,
+        ...quadrinho,
+      })),
+    );
+  }
+  update(id: string, quadrinho: Omit<Quadrinho, 'id'>): Observable<Quadrinho> {
+    return this.http
+      .put<Omit<Quadrinho, 'id'>>(`${this.apiUrl}/${id}${this.sufix}`, quadrinho)
+      .pipe(map((reponse) => ({ id, ...quadrinho })));
   }
   delete(id: string): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}${this.sufix}`);

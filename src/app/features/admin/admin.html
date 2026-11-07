@@ -6,7 +6,9 @@
       <h1>Administração de quadrinhos</h1>
       <p>Organize as obras que fazem parte do acervo.</p>
     </div>
-    <a class="botao-novo" routerLink="/admin/quadrinhos/novo"><span aria-hidden="true">+</span> Novo quadrinho</a>
+    <a class="botao-novo" routerLink="/admin/quadrinhos/novo"
+      ><span aria-hidden="true">+</span> Novo quadrinho</a
+    >
   </header>
 
   <section class="itens" aria-labelledby="titulo-itens">
@@ -15,13 +17,43 @@
         <span class="rotulo-secao">ACERVO</span>
         <h2 id="titulo-itens">Itens cadastrados</h2>
       </div>
+      @if (sucessMessage) {
+        <div class="mensagem-sucesso">
+          <span aria-hidden="true">✔</span>
+          {{ sucessMessage }}
+        </div>
+      }
+      @if (errorMessage) {
+        <div class="mensagem-erro">
+          <span aria-hidden="true">✖</span>
+          {{ errorMessage }}
+        </div>
+      }
       <span class="contador-itens">— <span>obras</span></span>
     </div>
-    <div class="estado-vazio">
-      <div class="icone-estante" aria-hidden="true"><span></span><span></span><span></span></div>
-      <h3>Nenhum quadrinho cadastrado ainda</h3>
-      <p>Os itens do acervo aparecerão aqui quando o cadastro estiver conectado à API.</p>
-      <a routerLink="/admin/quadrinhos/novo">Preparar um novo cadastro <span aria-hidden="true">→</span></a>
+    @if (loading) {
+      <div class="carregando">
+        <span aria-hidden="true">⏳</span>
+        Carregando quadrinhos...
+      </div>
+    }
+    @if (!loading && quadrinhos.length === 0) {
+      <p>Nenhum quadrinho cadastrado.</p>
+    }
+    <div class="conteudo-grid">
+      @for (quadrinho of quadrinhos; track quadrinho.id) {
+        <div class="quadrinho-item">
+          <h3>{{ quadrinho.titulo }}</h3>
+          <p>R$ {{ quadrinho.preco }}</p>
+          <p>{{ quadrinho.autor }}</p>
+          <p>{{ quadrinho.ano }}</p>
+          <div class="actions">
+            <button class="btn-edit" type="button" (click)="edit(quadrinho.id)">Editar</button>
+            <button class="btn-delete" type="button" (click)="remove(quadrinho.id)">Remover</button>
+          </div>
+        </div>
+      }
     </div>
+
   </section>
 </section>

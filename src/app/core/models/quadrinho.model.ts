@@ -5,7 +5,10 @@ export interface Quadrinho {
   autor: string;
   editora: string;
   genero: string;
+  ano: string;
+  preco: number;
   volume: number;
+  icone : string; 
   dataPublicacao: string;
   disponivel: boolean;
 }

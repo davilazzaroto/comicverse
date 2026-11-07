@@ -27,12 +27,12 @@ export const routes: Routes = [
     title: 'Admin | ComicVerse',
   },
   {
-    path: 'admin/quadrinhos/novo',
+    path: 'admin/quadrinhos/form/:id',
     loadComponent: () =>
       import('./features/manutencao-quadrinho/manutencao-quadrinho').then(
         (m) => m.ManutencaoQuadrinho,
       ),
-    title: 'Novo quadrinho | ComicVerse',
+    title: 'Editar quadrinho | ComicVerse',
   },
   {
     path: 'sobre',
