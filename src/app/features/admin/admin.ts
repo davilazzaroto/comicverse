@@ -39,9 +39,7 @@ export class Admin {
   }
 
   edit(id: string): void {
-    this.router.navigate(['/admin/form'], {
-      queryParams: { id },
-    });
+    this.router.navigate(['/admin/quadrinhos/form', id]);
   }
 
   remove(id: string): void {

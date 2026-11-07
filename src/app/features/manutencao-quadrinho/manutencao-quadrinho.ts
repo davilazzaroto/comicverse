@@ -1,7 +1,8 @@
 import { Component, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute, RouterLink,Router } from '@angular/router';
 import { QuadrinhosService } from '../../core/services/quadrinhos.service';
+
 
 @Component({
   imports: [RouterLink, ReactiveFormsModule],
@@ -13,7 +14,8 @@ export class ManutencaoQuadrinho {
   private fb = inject(FormBuilder);
   private quadrinhosService = inject(QuadrinhosService);
   private route = inject(ActivatedRoute);
-  private router = inject(RouterLink);
+  private router = inject(Router);
+
 
   editingQuadrinhoId: string | null = null;
   loading = false;
@@ -21,7 +23,7 @@ export class ManutencaoQuadrinho {
   successMessage = '';
   errorMessage = '';
 
-  form = this.fb.group({
+  form = this.fb.nonNullable.group({
     titulo: ['', [Validators.required, Validators.minLength(3)]],
     autor: ['', [Validators.required, Validators.minLength(15)]],
     icone: ['', [Validators.required]],
@@ -49,11 +51,11 @@ export class ManutencaoQuadrinho {
           this.form.patchValue({
             titulo: quadrinho.titulo,
             autor: quadrinho.autor,
-            icone: quadrinho.icone,
+            icone: quadrinho.icone ?? '',
             editora: quadrinho.editora,
             genero: quadrinho.genero,
-            ano: quadrinho.ano,
-            preco: quadrinho.preco,
+            ano: quadrinho.ano ?? '',
+            preco: quadrinho.preco ?? 0,
             volume: quadrinho.volume,
             dataPublicacao: quadrinho.dataPublicacao,
             disponivel: quadrinho.disponivel,
@@ -68,10 +70,14 @@ export class ManutencaoQuadrinho {
     });
   }
   submit(): void {
+    if (this.loading || this.loadingData) {
+      return;
+    }
     this.successMessage = '';
     this.errorMessage = '';
     if (this.form.invalid) {
       this.form.markAllAsTouched();
+      this.errorMessage = 'Confira os campos obrigatórios e os tamanhos mínimos informados.';
       return;
     }
     this.loading = true;
@@ -88,8 +94,19 @@ export class ManutencaoQuadrinho {
       dataPublicacao: formValue.dataPublicacao,
       disponivel: formValue.disponivel,
     };
-    if (this.editingQuadrinhoId !== null) {
-      
-    }
+    const request = this.editingQuadrinhoId !== null
+      ? this.quadrinhosService.update(this.editingQuadrinhoId, quadrinhoData)
+      : this.quadrinhosService.create(quadrinhoData);
+
+    request.subscribe({
+      next: () => {
+        this.loading = false;
+        this.router.navigate(['/admin']);
+      },
+      error: (error) => {
+        this.errorMessage = 'Erro ao salvar o quadrinho. ' + error.message;
+        this.loading = false;
+      },
+    });
   }
 }

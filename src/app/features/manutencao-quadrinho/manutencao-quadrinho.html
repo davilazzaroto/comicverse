@@ -1,25 +1,66 @@
-<section class="pagina-base">
-  <a class="voltar" routerLink="/admin"><span aria-hidden="true">←</span> Voltar ao Admin</a>
+﻿<section class="pagina-base">
+  <a class="voltar" routerLink="/admin">← Voltar ao Admin</a>
   <header class="manutencao-cabecalho">
     <div>
-      <span class="etiqueta">Administração <span aria-hidden="true">/</span> Novo registro</span>
-      <h1>Novo quadrinho</h1>
-      <p>Prepare as informações da obra para incluir no acervo.</p>
+      <span class="etiqueta">Administração</span>
+      <h1>{{ editingQuadrinhoId ? 'Editar quadrinho' : 'Novo quadrinho' }}</h1>
+      <p>Preencha as informações da obra para salvar no acervo.</p>
     </div>
-    <span class="etiqueta-etapa">FORMULÁRIO EM PREPARAÇÃO</span>
   </header>
-  <section class="formulario-reserva" aria-labelledby="titulo-formulario">
-    <div class="reserva-icone" aria-hidden="true">＋</div>
-    <div>
-      <span class="rotulo-secao">PRÓXIMA ETAPA</span>
-      <h2 id="titulo-formulario">Espaço do formulário</h2>
+
+  @if (loadingData) {
+    <p role="status">Carregando dados do quadrinho...</p>
+  }
+  @if (errorMessage) {
+    <p role="alert">{{ errorMessage }}</p>
+  }
+
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <fieldset [disabled]="loading || loadingData">
+      <legend>Dados do quadrinho</legend>
       <p>
-        Os campos de título, autor, editora, gênero, volume, publicação e disponibilidade serão
-        implementados junto com a integração.
+        <label for="titulo">Título (mínimo de 3 caracteres)</label>
+        <input id="titulo" type="text" formControlName="titulo" required minlength="3" />
       </p>
-    </div>
-    <div class="campos-esqueleto" aria-hidden="true">
-      <span></span><span></span><span></span><span></span>
-    </div>
-  </section>
+      <p>
+        <label for="autor">Autor (mínimo de 15 caracteres)</label>
+        <input id="autor" type="text" formControlName="autor" required minlength="15" />
+      </p>
+      <p>
+        <label for="icone">Ícone</label>
+        <input id="icone" type="text" formControlName="icone" required />
+      </p>
+      <p>
+        <label for="editora">Editora (mínimo de 20 caracteres)</label>
+        <input id="editora" type="text" formControlName="editora" required minlength="20" />
+      </p>
+      <p>
+        <label for="genero">Gênero (mínimo de 15 caracteres)</label>
+        <input id="genero" type="text" formControlName="genero" required minlength="15" />
+      </p>
+      <p>
+        <label for="ano">Ano</label>
+        <input id="ano" type="text" formControlName="ano" required />
+      </p>
+      <p>
+        <label for="preco">Preço</label>
+        <input id="preco" type="number" formControlName="preco" required min="0" step="0.01" />
+      </p>
+      <p>
+        <label for="volume">Volume</label>
+        <input id="volume" type="number" formControlName="volume" />
+      </p>
+      <p>
+        <label for="dataPublicacao">Data de publicação</label>
+        <input id="dataPublicacao" type="date" formControlName="dataPublicacao" />
+      </p>
+      <p>
+        <label for="disponivel">
+          <input id="disponivel" type="checkbox" formControlName="disponivel" />
+          Disponível
+        </label>
+      </p>
+      <button type="submit">{{ loading ? 'Salvando...' : 'Salvar quadrinho' }}</button>
+    </fieldset>
+  </form>
 </section>
