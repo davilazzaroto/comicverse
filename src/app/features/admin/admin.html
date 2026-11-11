@@ -31,22 +31,28 @@
       }
       <span class="contador-itens">— <span>obras</span></span>
     </div>
-    @if (loading) {
+    @if (loading()) {
       <div class="carregando">
         <span aria-hidden="true">⏳</span>
         Carregando quadrinhos...
       </div>
     }
-    @if (!loading && quadrinhos.length === 0) {
+    @if (!loading() && quadrinhos().length === 0) {
       <p>Nenhum quadrinho cadastrado.</p>
     }
     <div class="conteudo-grid">
-      @for (quadrinho of quadrinhos; track quadrinho.id) {
+      @for (quadrinho of quadrinhos(); track quadrinho.id) {
         <div class="quadrinho-item">
           <h3>{{ quadrinho.titulo }}</h3>
           <p>R$ {{ quadrinho.preco }}</p>
           <p>{{ quadrinho.autor }}</p>
           <p>{{ quadrinho.ano }}</p>
+          <p>{{ quadrinho.editora }}</p>
+          <img src="{{ quadrinho.icone }}" alt="Capa do quadrinho {{ quadrinho.titulo }}" />
+
+          <p>Data de publicação: {{ quadrinho.dataPublicacao | date: 'dd/MM/yyyy' }}</p>
+          <p>Volume: {{ quadrinho.volume }}</p>
+          <p>Gênero: {{ quadrinho.genero }}</p>
           <div class="actions">
             <button class="btn-edit" type="button" (click)="edit(quadrinho.id)">Editar</button>
             <button class="btn-delete" type="button" (click)="remove(quadrinho.id)">Remover</button>

@@ -1,140 +1,130 @@
-.pagina-base {
-  width: min(100%, 1100px);
-  margin: 0 auto;
-  color: #1d2440;
-}
-
-.voltar {
-  display: inline-flex;
-  margin: 0 0 30px;
-  color: #626a81;
-  align-items: center;
-  gap: 9px;
-  font-weight: 700;
-  text-decoration: none;
-}
-
-.voltar:hover {
-  color: #a87312;
-}
-
-.manutencao-cabecalho {
-  display: flex;
-  margin-bottom: 26px;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 20px;
-}
-
-.etiqueta {
-  color: #a87312;
-  font-size: .78rem;
-  font-weight: 800;
-  letter-spacing: .13em;
-  text-transform: uppercase;
-}
-
-.manutencao-cabecalho h1 {
-  margin: 11px 0 7px;
-  font-size: clamp(2rem, 4vw, 3.2rem);
-  letter-spacing: -.04em;
-}
-
-.manutencao-cabecalho p {
-  margin: 0;
-  color: #626a81;
-  line-height: 1.7;
-}
-
-.etiqueta-etapa {
-  margin-bottom: 4px;
-  padding: 8px 10px;
-  border: 1px solid #e5dcc7;
-  border-radius: 4px;
-  color: #8b671d;
-  font-size: .62rem;
-  font-weight: 800;
-  letter-spacing: .1em;
-}
-
-.formulario-reserva {
-  display: grid;
-  min-height: 350px;
-  padding: clamp(24px, 5vw, 48px);
-  border: 1px solid #e0e3ec;
-  border-radius: 14px;
+﻿/* Formulario com duas colunas no computador e uma no celular. */
+.form-box {
+  max-width: 780px;
+  margin: 24px auto;
+  padding: 24px;
+  border: 1px solid #dfe3ec;
+  border-top: 4px solid #e5b85b;
+  border-radius: 8px;
   background: #fafafc;
-  grid-template-columns: 52px minmax(0, 1fr);
-  align-content: center;
+}
+
+h2 {
+  margin: 0 0 24px;
+  color: #1d2440;
+  font-size: 1.5rem;
+}
+
+form {
+  display: grid;
   gap: 18px;
 }
 
-.reserva-icone {
+fieldset {
   display: grid;
-  width: 48px;
-  height: 48px;
-  border: 1px solid #e5dcc7;
-  border-radius: 12px;
-  background: #f7f0df;
-  color: #a87312;
-  font-size: 1.4rem;
-  place-items: center;
-}
-
-.rotulo-secao {
-  color: #a87312;
-  font-size: .66rem;
-  font-weight: 800;
-  letter-spacing: .14em;
-}
-
-.formulario-reserva h2 {
-  margin: 7px 0;
-  font-family: Georgia, 'Times New Roman', serif;
-  font-size: clamp(1.5rem, 3vw, 2rem);
-  font-weight: 400;
-}
-
-.formulario-reserva p {
-  max-width: 640px;
-  margin: 0;
-  color: #626a81;
-  line-height: 1.7;
-}
-
-.campos-esqueleto {
-  display: grid;
-  margin-top: 14px;
-  grid-column: 2;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 12px;
-}
-
-.campos-esqueleto span {
-  height: 42px;
-  border: 1px dashed #d5d8e1;
+  gap: 18px;
+  min-width: 0;
+  margin: 0;
+  padding: 18px;
+  border: 1px solid #dfe3ec;
   border-radius: 6px;
   background: #fff;
 }
 
-@media (max-width: 640px) {
-  .manutencao-cabecalho {
-    align-items: flex-start;
-    flex-direction: column;
-  }
-
-  /* No celular, o conteúdo e os campos de exemplo usam uma única coluna. */
-  .formulario-reserva {
-    grid-template-columns: 1fr;
-  }
-
-  .campos-esqueleto {
-    grid-column: 1;
-  }
+legend {
+  padding: 0 8px;
+  color: #35416b;
+  font-weight: bold;
 }
 
-@media (max-width: 420px) {
-  .campos-esqueleto {
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+label {
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+input,
+button {
+  font: inherit;
+}
+
+input:not([type="checkbox"]) {
+  width: 100%;
+  min-width: 0;
+  padding: 10px;
+  border: 1px solid #bcc4d3;
+  border-radius: 4px;
+  background: #fff;
+  color: #202842;
+}
+
+input:focus-visible,
+button:focus-visible {
+  outline: 2px solid #35416b;
+  outline-offset: 2px;
+}
+
+label[for="disponivel"] {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 24px;
+}
+
+input[type="checkbox"] {
+  width: 17px;
+  height: 17px;
+  accent-color: #35416b;
+}
+
+.error-message,
+[role="alert"] {
+  color: #a12622;
+}
+
+.error-message {
+  font-size: 0.8rem;
+}
+
+button {
+  justify-self: start;
+  padding: 10px 24px;
+  border: 1px solid #d2a34b;
+  border-radius: 5px;
+  background: #e5b85b;
+  color: #1d2440;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button:hover:not(:disabled) {
+  background: #f3cf83;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+@media (max-width: 600px) {
+  .form-box {
+    padding: 16px;
+    margin: 16px auto;
+  }
+
+  fieldset {
     grid-template-columns: 1fr;
+    padding: 12px;
+  }
+
+  label[for="disponivel"] {
+    margin-top: 0;
   }
 }

@@ -170,3 +170,91 @@
     flex-direction: column;
   }
 }
+/* Cada obra fica em um bloco separado para facilitar a leitura. */
+.conteudo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.quadrinho-item {
+  min-width: 0;
+  padding: 20px;
+  border: 1px solid #dfe3ec;
+  border-top: 3px solid #e5b85b;
+  border-radius: 6px;
+  background: #fff;
+  overflow-wrap: anywhere;
+}
+
+.quadrinho-item h3 {
+  margin: 0 0 16px;
+  font-size: 1.1rem;
+  line-height: 1.4;
+}
+
+.quadrinho-item p {
+  margin: 8px 0;
+  color: #525d75;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.quadrinho-item img {
+  display: block;
+  max-width: 100%;
+  height: 160px;
+  margin: 14px 0;
+  object-fit: contain;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 18px;
+  padding-top: 14px;
+  border-top: 1px solid #e6e8ee;
+}
+
+.actions button {
+  padding: 8px 16px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  font: inherit;
+  font-size: 0.875rem;
+  cursor: pointer;
+}
+
+.btn-edit {
+  background: #35416b;
+  color: #fff;
+}
+
+.actions .btn-delete {
+  border-color: #e6bdb8;
+  background: #fff5f4;
+  color: #a12622;
+}
+
+.actions button:hover {
+  filter: brightness(0.95);
+}
+
+.actions button:focus-visible {
+  outline: 2px solid #35416b;
+  outline-offset: 3px;
+}
+
+.mensagem-sucesso {
+  color: #246344;
+}
+
+.mensagem-erro {
+  color: #a12622;
+}
+
+.itens-cabecalho {
+  flex-wrap: wrap;
+}

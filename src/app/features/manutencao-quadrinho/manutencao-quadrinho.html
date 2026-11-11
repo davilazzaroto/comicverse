@@ -1,12 +1,11 @@
-﻿<section class="pagina-base">
-  <a class="voltar" routerLink="/admin">← Voltar ao Admin</a>
-  <header class="manutencao-cabecalho">
-    <div>
-      <span class="etiqueta">Administração</span>
-      <h1>{{ editingQuadrinhoId ? 'Editar quadrinho' : 'Novo quadrinho' }}</h1>
-      <p>Preencha as informações da obra para salvar no acervo.</p>
-    </div>
-  </header>
+<div class="form-box">
+  <h2>
+    @if (editingQuadrinhoId !== null) {
+      Editar quadrinho
+    } @else {
+      Adicionar novo quadrinho
+    }
+  </h2>
 
   @if (loadingData) {
     <p role="status">Carregando dados do quadrinho...</p>
@@ -14,53 +13,119 @@
   @if (errorMessage) {
     <p role="alert">{{ errorMessage }}</p>
   }
+  @if (successMessage) {
+    <p role="status">{{ successMessage }}</p>
+  }
 
   <form [formGroup]="form" (ngSubmit)="submit()">
     <fieldset [disabled]="loading || loadingData">
       <legend>Dados do quadrinho</legend>
-      <p>
-        <label for="titulo">Título (mínimo de 3 caracteres)</label>
+
+      <div class="field">
+        <label for="titulo">Título</label>
         <input id="titulo" type="text" formControlName="titulo" required minlength="3" />
-      </p>
-      <p>
-        <label for="autor">Autor (mínimo de 15 caracteres)</label>
-        <input id="autor" type="text" formControlName="autor" required minlength="15" />
-      </p>
-      <p>
+        @if (form.controls.titulo.touched && form.controls.titulo.hasError('required')) {
+          <span class="error-message">O título é obrigatório.</span>
+        }
+        @if (form.controls.titulo.touched && form.controls.titulo.hasError('minlength')) {
+          <span class="error-message">O título deve ter pelo menos 3 caracteres.</span>
+        }
+      </div>
+
+      <div class="field">
+        <label for="autor">Autor</label>
+        <input id="autor" type="text" formControlName="autor" required minlength="2" />
+        @if (form.controls.autor.touched && form.controls.autor.hasError('required')) {
+          <span class="error-message">O autor é obrigatório.</span>
+        }
+        @if (form.controls.autor.touched && form.controls.autor.hasError('minlength')) {
+          <span class="error-message">O autor deve ter pelo menos 2 caracteres.</span>
+        }
+      </div>
+
+      <div class="field">
         <label for="icone">Ícone</label>
         <input id="icone" type="text" formControlName="icone" required />
-      </p>
-      <p>
-        <label for="editora">Editora (mínimo de 20 caracteres)</label>
-        <input id="editora" type="text" formControlName="editora" required minlength="20" />
-      </p>
-      <p>
-        <label for="genero">Gênero (mínimo de 15 caracteres)</label>
-        <input id="genero" type="text" formControlName="genero" required minlength="15" />
-      </p>
-      <p>
+        @if (form.controls.icone.touched && form.controls.icone.hasError('required')) {
+          <span class="error-message">O ícone é obrigatório.</span>
+        }
+      </div>
+
+      <div class="field">
+        <label for="editora">Editora</label>
+        <input id="editora" type="text" formControlName="editora" required minlength="2" />
+        @if (form.controls.editora.touched && form.controls.editora.hasError('required')) {
+          <span class="error-message">A editora é obrigatória.</span>
+        }
+        @if (form.controls.editora.touched && form.controls.editora.hasError('minlength')) {
+          <span class="error-message">A editora deve ter pelo menos 2 caracteres.</span>
+        }
+      </div>
+
+      <div class="field">
+        <label for="genero">Gênero</label>
+        <input id="genero" type="text" formControlName="genero" required minlength="2" />
+        @if (form.controls.genero.touched && form.controls.genero.hasError('required')) {
+          <span class="error-message">O gênero é obrigatório.</span>
+        }
+        @if (form.controls.genero.touched && form.controls.genero.hasError('minlength')) {
+          <span class="error-message">O gênero deve ter pelo menos 2 caracteres.</span>
+        }
+      </div>
+
+      <div class="field">
         <label for="ano">Ano</label>
         <input id="ano" type="text" formControlName="ano" required />
-      </p>
-      <p>
+        @if (form.controls.ano.touched && form.controls.ano.hasError('required')) {
+          <span class="error-message">O ano é obrigatório.</span>
+        }
+      </div>
+
+      <div class="field">
         <label for="preco">Preço</label>
-        <input id="preco" type="number" formControlName="preco" required min="0" step="0.01" />
-      </p>
-      <p>
+        <input id="preco" type="number" formControlName="preco" required min="0" />
+        @if (form.controls.preco.touched && form.controls.preco.hasError('required')) {
+          <span class="error-message">O preço é obrigatório.</span>
+        }
+        @if (form.controls.preco.touched && form.controls.preco.hasError('min')) {
+          <span class="error-message">O preço não pode ser negativo.</span>
+        }
+      </div>
+
+      <div class="field">
         <label for="volume">Volume</label>
-        <input id="volume" type="number" formControlName="volume" />
-      </p>
-      <p>
+        <input id="volume" type="number" formControlName="volume" required />
+        @if (form.controls.volume.touched && form.controls.volume.hasError('required')) {
+          <span class="error-message">O volume é obrigatório.</span>
+        }
+      </div>
+
+      <div class="field">
         <label for="dataPublicacao">Data de publicação</label>
-        <input id="dataPublicacao" type="date" formControlName="dataPublicacao" />
-      </p>
-      <p>
+        <input id="dataPublicacao" type="date" formControlName="dataPublicacao" required />
+        @if (
+          form.controls.dataPublicacao.touched && form.controls.dataPublicacao.hasError('required')
+        ) {
+          <span class="error-message">A data de publicação é obrigatória.</span>
+        }
+      </div>
+
+      <div class="field">
         <label for="disponivel">
           <input id="disponivel" type="checkbox" formControlName="disponivel" />
           Disponível
         </label>
-      </p>
-      <button type="submit">{{ loading ? 'Salvando...' : 'Salvar quadrinho' }}</button>
+      </div>
+
     </fieldset>
-  </form>
-</section>
+    <button type="submit" [disabled]="loading || loadingData">
+      @if(loading) {
+        Salvando...
+      } @else if(editingQuadrinhoId !== null && !loading) {
+        Atualizar
+      } @else {
+        Salvar
+      }
+    </button>
+  </form> 
+</div>

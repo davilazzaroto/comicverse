@@ -1,11 +1,10 @@
 import { Component, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { ActivatedRoute, RouterLink,Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { QuadrinhosService } from '../../core/services/quadrinhos.service';
 
-
 @Component({
-  imports: [RouterLink, ReactiveFormsModule],
+  imports: [ReactiveFormsModule],
   selector: 'app-manutencao-quadrinho',
   styleUrl: './manutencao-quadrinho.css',
   templateUrl: './manutencao-quadrinho.html',
@@ -16,7 +15,6 @@ export class ManutencaoQuadrinho {
   private route = inject(ActivatedRoute);
   private router = inject(Router);
 
-
   editingQuadrinhoId: string | null = null;
   loading = false;
   loadingData = false;
@@ -25,15 +23,15 @@ export class ManutencaoQuadrinho {
 
   form = this.fb.nonNullable.group({
     titulo: ['', [Validators.required, Validators.minLength(3)]],
-    autor: ['', [Validators.required, Validators.minLength(15)]],
+    autor: ['', [Validators.required, Validators.minLength(2)]],
     icone: ['', [Validators.required]],
-    editora: ['', [Validators.required, Validators.minLength(20)]],
-    genero: ['', [Validators.required, Validators.minLength(15)]],
+    editora: ['', [Validators.required, Validators.minLength(2)]],
+    genero: ['', [Validators.required, Validators.minLength(2)]],
     ano: ['', [Validators.required]],
     preco: [0, [Validators.required, Validators.min(0)]],
-    volume: [0],
-    dataPublicacao: [''],
-    disponivel: [true],
+    volume: [0, [Validators.required]],
+    dataPublicacao: ['', [Validators.required]],
+    disponivel: [true, [Validators.required]],
   });
 
   ngOnInit(): void {
@@ -94,18 +92,35 @@ export class ManutencaoQuadrinho {
       dataPublicacao: formValue.dataPublicacao,
       disponivel: formValue.disponivel,
     };
-    const request = this.editingQuadrinhoId !== null
-      ? this.quadrinhosService.update(this.editingQuadrinhoId, quadrinhoData)
-      : this.quadrinhosService.create(quadrinhoData);
 
-    request.subscribe({
+    if (this.editingQuadrinhoId !== null) {
+      this.quadrinhosService.update(this.editingQuadrinhoId, quadrinhoData).subscribe({
+        next: () => {
+          this.loading = false;
+          this.successMessage = 'Quadrinho atualizado com sucesso.';
+          setTimeout(() => {
+            this.router.navigate(['/admin']);
+          }, 2000);
+        },
+        error: () => {
+          this.loading = false;
+          this.errorMessage = 'Erro ao atualizar o quadrinho.';
+        },
+      });
+      return;
+    }
+    this.quadrinhosService.create(quadrinhoData).subscribe({
       next: () => {
         this.loading = false;
-        this.router.navigate(['/admin']);
+        this.successMessage = 'Quadrinho criado com sucesso.';
+        this.form.reset();
+        setTimeout(() => {
+          this.router.navigate(['/admin']);
+        }, 2000);
       },
-      error: (error) => {
-        this.errorMessage = 'Erro ao salvar o quadrinho. ' + error.message;
+      error: () => {
         this.loading = false;
+        this.errorMessage = 'Erro ao criar o quadrinho.';
       },
     });
   }

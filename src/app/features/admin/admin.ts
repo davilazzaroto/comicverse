@@ -1,10 +1,11 @@
-import { Component, inject } from '@angular/core';
+import { DatePipe } from '@angular/common';
+import { Component, inject,signal } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { QuadrinhosService } from '../../core/services/quadrinhos.service';
 import { Quadrinho } from '../../core/models/quadrinho.model';
 
 @Component({
-  imports: [RouterLink],
+  imports: [RouterLink, DatePipe],
   selector: 'app-admin',
   styleUrl: './admin.css',
   templateUrl: './admin.html',
@@ -13,23 +14,23 @@ export class Admin {
   private readonly quadrinhosService = inject(QuadrinhosService);
   private router = inject(Router);
 
-  quadrinhos: Quadrinho[] = [];
-  loading = false;
+  quadrinhos = signal<Quadrinho[]>([]);
+  loading = signal(false);
   errorMessage = '';
   sucessMessage = '';
 
   loadQuadrinhos(): void {
-    this.loading = true;
+    this.loading.set(true);
     this.errorMessage = '';
 
     this.quadrinhosService.getAll().subscribe({
       next: (quadrinhos) => {
-        this.quadrinhos = quadrinhos;
-        this.loading = false;
+        this.quadrinhos.set(quadrinhos);
+        this.loading.set(false);
       },
       error: (error) => {
         this.errorMessage = 'Erro ao carregar os quadrinhos.' + error.message;
-        this.loading = false;
+        this.loading.set(false);
       },
     });
   }
