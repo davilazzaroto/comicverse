@@ -1,50 +1,58 @@
-﻿import { Injectable } from '@angular/core';
-import { defer, Observable, of, throwError } from 'rxjs';
+import { inject } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Quadrinho } from '../models/quadrinho.model';
+import { HttpClient } from '@angular/common/http';
+import { map, Observable } from 'rxjs';
 
-// Os dados duram somente enquanto a pagina estiver aberta. F5 limpa o acervo.
+// Ponto central para ler e manter quadrinhos; a integração com API e Firebase
+// ainda será feita em aula.
+type FirebaseQuadrinho = Omit<Quadrinho, 'id'> & { id?: string };
+
 @Injectable({ providedIn: 'root' })
 export class QuadrinhosService {
-  private quadrinhos: Quadrinho[] = [];
-  private proximoId = 1;
+  private http = inject(HttpClient);
+  private apiUrl = 'https://comicverse-80371-default-rtdb.firebaseio.com/quadrinhos';
+  private sufix = '.json';
 
   getAll(): Observable<Quadrinho[]> {
-    return defer(() => of(this.quadrinhos.map((quadrinho) => ({ ...quadrinho }))));
+    return this.http.get<Record<string, FirebaseQuadrinho>>(this.apiUrl + this.sufix).pipe(
+      map((response) => {
+        if (!response) {
+          return [];
+        }
+        return Object.entries(response).map(([id, quadrinho]) => {
+          const { id: _ignoredId, ...quadrinhoData } = quadrinho;
+          return { id, ...quadrinhoData } as Quadrinho;
+        });
+      }),
+    );
   }
-
   getById(id: string): Observable<Quadrinho | null> {
-    return defer(() => {
-      const quadrinho = this.quadrinhos.find((item) => item.id === id);
-      return quadrinho
-        ? of({ ...quadrinho })
-        : throwError(() => new Error('Quadrinho nao encontrado.'));
-    });
+    return this.http.get<FirebaseQuadrinho>(`${this.apiUrl}/${id}${this.sufix}`).pipe(
+      map((response) => {
+        if (!response) {
+          throw new Error(`Quadrinho com ID ${id} não encontrado.`);
+        }
+        const { id: _ignoredId, ...quadrinhoData } = response;
+        return { id, ...quadrinhoData };
+      }),
+    );
   }
 
-  create(dados: Omit<Quadrinho, 'id'>): Observable<Quadrinho> {
-    return defer(() => {
-      const quadrinho = { ...dados, id: String(this.proximoId++) };
-      this.quadrinhos.push(quadrinho);
-      return of({ ...quadrinho });
-    });
+  create(quadrinho: Omit<Quadrinho, 'id'>): Observable<Quadrinho> {
+    return this.http.post<{ name: string }>(this.apiUrl + this.sufix, quadrinho).pipe(
+      map((response) => ({
+        id: response.name,
+        ...quadrinho,
+      })),
+    );
   }
-
-  update(id: string, dados: Omit<Quadrinho, 'id'>): Observable<Quadrinho> {
-    return defer(() => {
-      const index = this.quadrinhos.findIndex((item) => item.id === id);
-      if (index === -1) {
-        return throwError(() => new Error('Quadrinho nao encontrado.'));
-      }
-      const quadrinho = { ...dados, id };
-      this.quadrinhos[index] = quadrinho;
-      return of({ ...quadrinho });
-    });
+  update(id: string, quadrinho: Omit<Quadrinho, 'id'>): Observable<Quadrinho> {
+    return this.http
+      .put<Omit<Quadrinho, 'id'>>(`${this.apiUrl}/${id}${this.sufix}`, quadrinho)
+      .pipe(map((reponse) => ({ id, ...quadrinho })));
   }
-
   delete(id: string): Observable<void> {
-    return defer(() => {
-      this.quadrinhos = this.quadrinhos.filter((item) => item.id !== id);
-      return of(undefined);
-    });
+    return this.http.delete<void>(`${this.apiUrl}/${id}${this.sufix}`);
   }
 }
