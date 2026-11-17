@@ -9,6 +9,17 @@
       <a routerLink="/quadrinhos" routerLinkActive="ativo">Catálogo</a>
       <a routerLink="/sobre" routerLinkActive="ativo">Sobre</a>
       <a class="botao-admin" routerLink="/admin" routerLinkActive="ativo">Admin</a>
+      <button
+        class="botao-tema"
+        type="button"
+        (click)="toggleTheme()"
+        [attr.aria-pressed]="isDarkMode()"
+        [attr.aria-label]="isDarkMode() ? 'Ativar modo claro' : 'Ativar modo escuro'"
+        [title]="isDarkMode() ? 'Ativar modo claro' : 'Ativar modo escuro'"
+      >
+        <span aria-hidden="true">{{ isDarkMode() ? '☀' : '☾' }}</span>
+        <span class="texto-tema">{{ isDarkMode() ? 'Claro' : 'Escuro' }}</span>
+      </button>
     </nav>
   </div>
 </header>

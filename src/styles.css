@@ -2,6 +2,58 @@
   box-sizing: border-box;
 }
 
+:root {
+  color-scheme: light;
+  --page-bg: #ffffff;
+  --surface: #ffffff;
+  --surface-alt: #fafafc;
+  --surface-soft: #f7f6f1;
+  --surface-strong: #f2f1ed;
+  --text-primary: #1d2440;
+  --text-secondary: #626a81;
+  --text-muted: #85899a;
+  --border: #e0e3ec;
+  --border-strong: #dfe2e9;
+  --accent: #e5b85b;
+  --accent-hover: #f3cf83;
+  --accent-text: #a87312;
+  --accent-contrast: #172039;
+  --nav-bg: #1d2440;
+  --nav-link: #e7eaf5;
+  --nav-hover: #35416b;
+  --link: #35416b;
+  --input-border: #bcc4d3;
+  --error: #a12622;
+  --success: #246344;
+  --shadow: rgb(29 36 64 / 6%);
+}
+
+body.dark-mode {
+  color-scheme: dark;
+  --page-bg: #0b1120;
+  --surface: #131c31;
+  --surface-alt: #111827;
+  --surface-soft: #151e33;
+  --surface-strong: #172238;
+  --text-primary: #f1f5f9;
+  --text-secondary: #94a3b8;
+  --text-muted: #94a3b8;
+  --border: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.12);
+  --accent: #f59e0b;
+  --accent-hover: #fbbf24;
+  --accent-text: #f59e0b;
+  --accent-contrast: #0b1120;
+  --nav-bg: #131c31;
+  --nav-link: #cbd5e1;
+  --nav-hover: #1e293b;
+  --link: #cbd5e1;
+  --input-border: rgba(255, 255, 255, 0.16);
+  --error: #f87171;
+  --success: #86efac;
+  --shadow: rgb(0 0 0 / 25%);
+}
+
 html,
 body {
   min-height: 100%;
@@ -10,9 +62,10 @@ body {
 
 body {
   min-height: 100vh;
-  background: #fff;
-  color: #202842;
+  background: var(--page-bg);
+  color: var(--text-primary);
   font-family: Arial, Helvetica, sans-serif;
+  transition: background-color .2s ease, color .2s ease;
 }
 
 /* A estrutura ocupa a janela e permite manter o rodapé no fim em páginas curtas. */

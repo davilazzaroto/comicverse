@@ -2,8 +2,8 @@
   /* Preenche o espaço livre quando o conteúdo da página é curto. */
   margin-top: auto;
   padding: 22px 16px;
-  background: #1d2440;
-  color: #fff;
+  background: var(--nav-bg);
+  color: var(--text-primary);
   text-align: center;
 }
 
@@ -12,5 +12,5 @@
 }
 
 .rodape small {
-  color: #c5cbe0;
+  color: var(--nav-link);
 }

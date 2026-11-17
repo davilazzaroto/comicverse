@@ -1,7 +1,7 @@
 .pagina-base {
   width: min(100%, 1180px);
   margin: 0 auto;
-  color: #1d2440;
+  color: var(--text-primary);
 }
 
 .admin-cabecalho {
@@ -13,7 +13,7 @@
 }
 
 .etiqueta {
-  color: #a87312;
+  color: var(--accent-text);
   font-size: .78rem;
   font-weight: 800;
   letter-spacing: .13em;
@@ -28,7 +28,7 @@
 
 .admin-cabecalho p {
   margin: 0;
-  color: #626a81;
+  color: var(--text-secondary);
   line-height: 1.7;
 }
 
@@ -37,8 +37,8 @@
   min-height: 48px;
   padding: 0 18px;
   border-radius: 9px;
-  background: #e5b85b;
-  color: #172039;
+  background: var(--accent);
+  color: var(--accent-contrast);
   align-items: center;
   gap: 14px;
   font-weight: 700;
@@ -47,33 +47,33 @@
 }
 
 .botao-novo:hover {
-  background: #f3cf83;
+  background: var(--accent-hover);
 }
 
 .botao-novo span {
-  color: #1d2440;
+  color: var(--accent-contrast);
   font-size: 1.3rem;
 }
 
 .itens {
   min-height: 430px;
   padding: clamp(20px, 4vw, 34px);
-  border: 1px solid #e0e3ec;
+  border: 1px solid var(--border);
   border-radius: 14px;
-  background: #fafafc;
+  background: var(--surface-alt);
 }
 
 .itens-cabecalho {
   display: flex;
   padding-bottom: 20px;
-  border-bottom: 1px solid #e6e8ee;
+  border-bottom: 1px solid var(--border);
   align-items: center;
   justify-content: space-between;
   gap: 16px;
 }
 
 .rotulo-secao {
-  color: #a87312;
+  color: var(--accent-text);
   font-size: .66rem;
   font-weight: 800;
   letter-spacing: .14em;
@@ -85,13 +85,13 @@
 }
 
 .contador-itens {
-  color: #b17c18;
+  color: var(--accent-text);
   font-size: 1.05rem;
   font-weight: 800;
 }
 
 .contador-itens span {
-  color: #85899a;
+  color: var(--text-muted);
   font-size: .78rem;
   font-weight: 400;
 }
@@ -144,14 +144,14 @@
 .estado-vazio p {
   max-width: 500px;
   margin: 0;
-  color: #626a81;
+  color: var(--text-secondary);
   line-height: 1.65;
 }
 
 .estado-vazio a {
   display: inline-flex;
   margin-top: 18px;
-  color: #35416b;
+  color: var(--link);
   align-items: center;
   gap: 8px;
   font-size: .9rem;
@@ -160,7 +160,7 @@
 }
 
 .estado-vazio a:hover {
-  color: #a87312;
+  color: var(--accent-text);
 }
 
 @media (max-width: 640px) {
@@ -181,10 +181,10 @@
 .quadrinho-item {
   min-width: 0;
   padding: 20px;
-  border: 1px solid #dfe3ec;
-  border-top: 3px solid #e5b85b;
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--accent);
   border-radius: 6px;
-  background: #fff;
+  background: var(--surface);
   overflow-wrap: anywhere;
 }
 
@@ -196,7 +196,7 @@
 
 .quadrinho-item p {
   margin: 8px 0;
-  color: #525d75;
+  color: var(--text-secondary);
   font-size: 0.9rem;
   line-height: 1.5;
 }
@@ -215,7 +215,7 @@
   gap: 10px;
   margin-top: 18px;
   padding-top: 14px;
-  border-top: 1px solid #e6e8ee;
+  border-top: 1px solid var(--border);
 }
 
 .actions button {
@@ -228,14 +228,14 @@
 }
 
 .btn-edit {
-  background: #35416b;
-  color: #fff;
+  background: var(--nav-hover);
+  color: var(--text-primary);
 }
 
 .actions .btn-delete {
-  border-color: #e6bdb8;
-  background: #fff5f4;
-  color: #a12622;
+  border-color: var(--border-strong);
+  background: var(--surface-alt);
+  color: var(--error);
 }
 
 .actions button:hover {
@@ -243,16 +243,16 @@
 }
 
 .actions button:focus-visible {
-  outline: 2px solid #35416b;
+  outline: 2px solid var(--link);
   outline-offset: 3px;
 }
 
 .mensagem-sucesso {
-  color: #246344;
+  color: var(--success);
 }
 
 .mensagem-erro {
-  color: #a12622;
+  color: var(--error);
 }
 
 .itens-cabecalho {

@@ -5,16 +5,16 @@
 .home {
   width: min(100%, 1320px);
   margin: 0 auto;
-  color: #1d2440;
+  color: var(--text-primary);
 }
 
 .hero {
   display: grid;
   min-height: 480px;
   overflow: hidden;
-  border: 1px solid #e3e5eb;
+  border: 1px solid var(--border);
   border-radius: 22px;
-  background: #f7f6f1;
+  background: var(--surface-soft);
   grid-template-columns: minmax(0, 1fr) minmax(320px, .88fr);
 }
 
@@ -26,7 +26,7 @@
 }
 
 .etiqueta {
-  color: #a87312;
+  color: var(--accent-text);
   font-size: .78rem;
   font-weight: 800;
   letter-spacing: .12em;
@@ -50,7 +50,7 @@
 .hero-conteudo > p {
   max-width: 580px;
   margin: 0;
-  color: #5d647b;
+  color: var(--text-secondary);
   line-height: 1.7;
 }
 
@@ -73,26 +73,26 @@
 }
 
 .botao-primario {
-  background: #1d2440;
-  color: #fff;
+  background: var(--nav-bg);
+  color: var(--text-primary);
 }
 
 .botao-primario:hover {
-  background: #35416b;
+  background: var(--nav-hover);
 }
 
 .botao-secundario {
-  border: 1px solid #c9cedd;
-  color: #1d2440;
+  border: 1px solid var(--border);
+  color: var(--text-primary);
 }
 
 .botao-secundario:hover {
-  background: #fff;
+  background: var(--surface);
 }
 
 .nota-acervo {
   margin-top: 20px !important;
-  color: #85899a !important;
+  color: var(--text-muted) !important;
   font-size: .85rem;
 }
 
@@ -189,13 +189,13 @@
 
 .secao-cabecalho p {
   margin: 0;
-  color: #6a7188;
+  color: var(--text-secondary);
   line-height: 1.6;
 }
 
 .link-catalogo {
   display: inline-flex;
-  color: #35416b;
+  color: var(--link);
   align-items: center;
   gap: 8px;
   font-size: .9rem;
@@ -205,7 +205,7 @@
 }
 
 .link-catalogo span {
-  color: #b17c18;
+  color: var(--accent-text);
 }
 
 .grade-generos {
@@ -217,9 +217,9 @@
 .card-genero {
   min-height: 175px;
   padding: 18px;
-  border: 1px solid #e0e3ec;
+  border: 1px solid var(--border);
   border-radius: 12px;
-  background: linear-gradient(145deg, #fff, #f8f8fb);
+  background: var(--surface);
 }
 
 .genero-icone {
@@ -229,7 +229,7 @@
   border: 1px solid #e6d9bb;
   border-radius: 10px;
   background: #f7f0df;
-  color: #a87312;
+  color: var(--accent-text);
   font-size: 1.2rem;
   place-items: center;
 }
@@ -241,7 +241,7 @@
 
 .card-genero p {
   margin: 0;
-  color: #6a7188;
+  color: var(--text-secondary);
   font-size: .88rem;
   line-height: 1.5;
 }

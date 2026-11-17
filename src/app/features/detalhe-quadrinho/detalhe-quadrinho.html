@@ -4,33 +4,54 @@
     <div>
       <span class="etiqueta">Ficha do acervo <span aria-hidden="true">/</span> Detalhes</span>
       <h1>Detalhes do quadrinho</h1>
-      <p>As informações da obra serão carregadas quando a consulta por ID estiver disponível.</p>
+      <p>Confira as informações da obra selecionada no catálogo.</p>
     </div>
-    <span class="identificador">REGISTRO <strong>—</strong></span>
+    <span class="identificador">REGISTRO <strong>{{ quadrinho()?.id || '—' }}</strong></span>
   </header>
 
+  @if (loading()) {
+    <p role="status">Carregando dados do quadrinho...</p>
+  }
+
+  @if (errorMessage()) {
+    <p role="alert" class="mensagem-erro">{{ errorMessage() }}</p>
+  }
+
+  @if (!loading() && !errorMessage() && quadrinho(); as obra) {
   <section class="ficha" aria-label="Ficha do quadrinho">
     <div class="capa-reserva">
-      <span class="capa-lombada" aria-hidden="true"></span>
-      <span class="capa-icone" aria-hidden="true">✦</span>
-      <span class="capa-aviso">CAPA DA OBRA</span>
-      <span class="capa-status">AGUARDANDO API</span>
+      @if (obra.icone) {
+        <img class="capa-imagem" [src]="obra.icone" [alt]="'Capa do quadrinho ' + obra.titulo" />
+      } @else {
+        <span class="capa-lombada" aria-hidden="true"></span>
+        <span class="capa-icone" aria-hidden="true">✦</span>
+        <span class="capa-aviso">CAPA DA OBRA</span>
+      }
+      <span class="capa-status">{{ obra.disponivel ? 'DISPONÍVEL' : 'INDISPONÍVEL' }}</span>
     </div>
 
     <div class="dados-ficha">
       <div class="titulo-obra">
         <span class="rotulo">TÍTULO DA OBRA</span>
-        <h2>Aguardando dados do acervo</h2>
-        <p class="autor"><span>AUTOR</span> A definir</p>
+        <h2>{{ obra.titulo }}</h2>
+        <p class="autor"><span>AUTOR</span> {{ obra.autor }}</p>
       </div>
       <dl class="metadados">
-        <div><dt>Editora</dt><dd>A definir</dd></div>
-        <div><dt>Gênero</dt><dd><span class="tag-genero">A definir</span></dd></div>
-        <div><dt>Volume</dt><dd>A definir</dd></div>
-        <div><dt>Data de publicação</dt><dd>A definir</dd></div>
-        <div class="disponibilidade"><dt>Disponibilidade</dt><dd><span class="status-pendente"></span>Aguardando consulta</dd></div>
+        <div><dt>Editora</dt><dd>{{ obra.editora }}</dd></div>
+        <div><dt>Ano</dt><dd>{{ obra.ano }}</dd></div>
+        <div><dt>Gênero</dt><dd><span class="tag-genero">{{ obra.genero }}</span></dd></div>
+        <div><dt>Volume</dt><dd>{{ obra.volume }}</dd></div>
+        <div><dt>Data de publicação</dt><dd>{{ obra.dataPublicacao | date: 'dd/MM/yyyy' }}</dd></div>
+        <div><dt>Preço</dt><dd>R$ {{ obra.preco }}</dd></div>
+        <div class="disponibilidade">
+          <dt>Disponibilidade</dt>
+          <dd>
+            <span class="status-pendente" [class.status-disponivel]="obra.disponivel"></span>
+            {{ obra.disponivel ? 'Disponível no acervo' : 'Indisponível no acervo' }}
+          </dd>
+        </div>
       </dl>
-      <p class="nota-ficha">Esta ficha será preenchida após a integração com a API.</p>
     </div>
   </section>
+  }
 </article>

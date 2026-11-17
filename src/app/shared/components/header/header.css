@@ -1,6 +1,6 @@
 .cabecalho {
-  background: #1d2440;
-  color: #fff;
+  background: var(--nav-bg);
+  color: var(--text-primary);
 }
 
 .cabecalho-conteudo {
@@ -16,7 +16,7 @@
 
 .marca {
   display: inline-flex;
-  color: #fff;
+  color: var(--text-primary);
   align-items: center;
   gap: 10px;
   font-size: 1.5rem;
@@ -29,9 +29,9 @@
   display: grid;
   width: 36px;
   height: 36px;
-  border: 2px solid #e5b85b;
+  border: 2px solid var(--accent);
   border-radius: 50%;
-  color: #e5b85b;
+  color: var(--accent);
   font-family: Georgia, 'Times New Roman', serif;
   font-size: 1.2rem;
   place-items: center;
@@ -47,32 +47,59 @@ nav {
 nav a {
   padding: 9px 12px;
   border-radius: 6px;
-  color: #e7eaf5;
+  color: var(--nav-link);
   text-decoration: none;
 }
 
 nav a:hover,
 nav a.ativo {
-  background: #35416b;
-  color: #fff;
+  background: var(--nav-hover);
+  color: var(--text-primary);
 }
 
 nav a:focus-visible,
-.marca:focus-visible {
-  outline: 2px solid #e5b85b;
+.marca:focus-visible,
+.botao-tema:focus-visible {
+  outline: 2px solid var(--accent);
   outline-offset: 3px;
 }
 
 nav .botao-admin {
-  background: #e5b85b;
-  color: #172039;
+  background: var(--accent);
+  color: var(--accent-contrast);
   font-weight: 700;
 }
 
 nav .botao-admin:hover,
 nav .botao-admin.ativo {
-  background: #f3cf83;
-  color: #172039;
+  background: var(--accent-hover);
+  color: var(--accent-contrast);
+}
+
+.botao-tema {
+  display: inline-flex;
+  min-height: 38px;
+  margin-left: 4px;
+  padding: 7px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 6px;
+  background: transparent;
+  color: var(--nav-link);
+  align-items: center;
+  gap: 7px;
+  font: inherit;
+  font-size: .82rem;
+  cursor: pointer;
+}
+
+.botao-tema:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.botao-tema span:first-child {
+  color: var(--accent);
+  font-size: 1rem;
 }
 
 @media (max-width: 600px) {
@@ -90,5 +117,15 @@ nav .botao-admin.ativo {
 
   nav a {
     padding: 8px 10px;
+  }
+}
+
+@media (max-width: 420px) {
+  .texto-tema {
+    display: none;
+  }
+
+  .botao-tema {
+    margin-left: auto;
   }
 }

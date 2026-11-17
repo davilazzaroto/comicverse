@@ -1,4 +1,3 @@
-<!-- Área do catálogo; por enquanto, mostra o estado vazio enquanto a API não está ligada. -->
 <section class="catalogo">
   <header class="catalogo-cabecalho">
     <div>
@@ -6,7 +5,7 @@
       <h1>Quadrinhos disponíveis</h1>
       <p>Uma estante de histórias em constante construção.</p>
     </div>
-    <span class="contador">ACERVO <strong>—</strong></span>
+    <span class="contador">ACERVO <strong>{{ quadrinhos().length }}</strong></span>
   </header>
 
   <section class="area-listagem" aria-labelledby="titulo-listagem">
@@ -15,18 +14,59 @@
         <span class="rotulo-secao">CATÁLOGO</span>
         <h2 id="titulo-listagem">Todas as obras</h2>
       </div>
-      <span class="estado-conexao"><span aria-hidden="true"></span> API em preparação</span>
+      <span class="estado-conexao"><span aria-hidden="true"></span> API conectada</span>
     </div>
-    <div class="estado-vazio">
-      <div class="icone-estante" aria-hidden="true">
-        <span></span><span></span><span></span>
+
+    @if (loading()) {
+      <p class="estado-carregando" role="status">Carregando quadrinhos...</p>
+    }
+
+    @if (errorMessage) {
+      <p class="mensagem-erro" role="alert">{{ errorMessage }}</p>
+    }
+
+    @if (!loading() && !errorMessage && quadrinhos().length === 0) {
+      <div class="estado-vazio">
+        <div class="icone-estante" aria-hidden="true">
+          <span></span><span></span><span></span>
+        </div>
+        <span class="etiqueta">Acervo em montagem</span>
+        <h3>Ainda não há quadrinhos para exibir</h3>
+        <p>As obras cadastradas aparecerão nesta estante.</p>
       </div>
-      <span class="etiqueta">Acervo em montagem</span>
-      <h3>Ainda não há quadrinhos para exibir</h3>
-      <p>
-        Quando a integração com a API estiver pronta, as obras cadastradas
-        aparecerão nesta estante.
-      </p>
-    </div>
+    }
+
+    @if (!loading() && quadrinhos().length > 0) {
+      <div class="conteudo-grid">
+        @for (quadrinho of quadrinhos(); track quadrinho.id) {
+          <article class="quadrinho-card">
+            @if (quadrinho.icone) {
+              <img
+                [src]="quadrinho.icone"
+                [alt]="'Capa do quadrinho ' + quadrinho.titulo"
+              />
+            } @else {
+              <div class="capa-sem-imagem" aria-hidden="true">ComicVerse</div>
+            }
+
+            <div class="quadrinho-dados">
+              <span class="genero">{{ quadrinho.genero }}</span>
+              <h3>{{ quadrinho.titulo }}</h3>
+              <p class="autor">{{ quadrinho.autor }}</p>
+              <p>{{ quadrinho.editora }} · Volume {{ quadrinho.volume }}</p>
+              @if (quadrinho.dataPublicacao) {
+                <p>{{ quadrinho.dataPublicacao | date: 'dd/MM/yyyy' }}</p>
+              }
+              <p class="preco">
+                R$ {{ quadrinho.preco }}
+              </p>
+              <a class="detalhes" [routerLink]="['/quadrinhos', quadrinho.id]">
+                Ver detalhes <span aria-hidden="true">→</span>
+              </a>
+            </div>
+          </article>
+        }
+      </div>
+    }
   </section>
 </section>
